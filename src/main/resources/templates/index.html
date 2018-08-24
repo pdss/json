@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    function st() {
+        //var d = {username:"luotao", password:"123456"};
+        // alert(1);
+        $.ajax({
+            url:"../json/user",
+            //date:JSON.stringify(d),
+            type:"GET",
+            dataType:"json",
+            //contentType: "application/json;charset=utf-8",
+            success:function (data) {
+                $("#div1").text(data.username);
+                $("#div2").text(data.password);
+            }
+        });
+    }
+    $(function () {
+       $("input").change(function () {
+           var val = $(this).val();
+           val = $.trim(val);
+           if(val!=""){
+               var url = "../json/username";
+               var args  = {"username":val};
+               $.post(url,args,function (data) {
+                   if(data.statu == 1){
+                       $("#div3").text("可以使用");
+                   }else {
+                       $("#div3").text("不能使用");
+                   }
+               })
+           }
+       });
+    });
+</script>
+<body>
+<button onclick="st()">获取用户名和密码</button><br/>
+用户名：<div id="div1">...</div>
+密码：<div id="div2">...</div>
+<form action="#" method="post">
+ 用户名：<input type="text">
+</form>
+<div id="div3"></div>
+</body>
+</html>

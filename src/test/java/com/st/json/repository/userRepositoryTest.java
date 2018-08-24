@@ -1,0 +1,22 @@
+package com.st.json.repository;
+
+import com.st.json.entity.UserInformation;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class userRepositoryTest {
+
+    @Autowired
+    private UserRepository userRepository;
+    @Test
+    public void test(){
+        UserInformation userInformation = new UserInformation();
+        userInformation = (UserInformation) userRepository.findById(1).get();
+        System.out.println(userInformation.getUsername());
+    }
+}
