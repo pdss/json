@@ -17,12 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
     @Autowired
-    private UserInformationService userInformationService;
+    private UserInformationService service;
     @GetMapping("/user")
     public UserInformation test(){
         //System.out.println(userInformation.getUsername());
 
-        return userInformationService.findOne(1);
+        return service.findOne(1);
     }
     @PostMapping("/username")
     public StatuResult test1(HttpServletRequest request){
