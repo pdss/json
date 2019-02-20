@@ -2,6 +2,7 @@ package com.st.json.controller;
 
 import com.st.json.entity.UserInformation;
 import com.st.json.result.StatuResult;
+import com.st.json.service.UserInformationService;
 import com.st.json.service.impl.UserInformationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
     @Autowired
-    private UserInformationServiceImpl userInformationService;
+    private UserInformationService userInformationService;
     @GetMapping("/user")
     public UserInformation test(){
         //System.out.println(userInformation.getUsername());
